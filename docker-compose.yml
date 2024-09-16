@@ -1,8 +1,24 @@
 services:
   todo:
-    image: todo
     build:
       context: ./todo
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=${MONGODB_URI}
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+  todo-backend:
+    build:
+      context: ./todo-backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=${MONGODB_URI}
+    restart: unless-stopped
