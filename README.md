@@ -13,5 +13,5 @@ cd TODO
 ## deploy using docker
 
 ```bash
-docker compose build --up
+docker compose up --build
 ```

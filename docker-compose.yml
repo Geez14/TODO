@@ -10,7 +10,7 @@ services:
       - MONGODB_URI=${MONGODB_URI}
     restart: unless-stopped
     depends_on:
-      - backend
+      - todo-backend
 
   todo-backend:
     build:
